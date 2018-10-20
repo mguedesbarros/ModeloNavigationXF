@@ -52,7 +52,8 @@ namespace ModeloNavigation.UI.Services.Navigation
             Page page;
             if (viewType == null)
             {
-                var name = typeof(BaseViewModel).AssemblyQualifiedName.Split('.')[0];
+                var iLength = typeof(BaseViewModel).AssemblyQualifiedName.IndexOf(".ViewModels");
+                var name = typeof(BaseViewModel).AssemblyQualifiedName.Substring(0, iLength);
 
                 var viewTypeName = $"{name}.Views.{viewModelTypeName.Substring(0, viewModelTypeName.Length - 9)}Page";
                 viewType = Type.GetType(viewTypeName);
